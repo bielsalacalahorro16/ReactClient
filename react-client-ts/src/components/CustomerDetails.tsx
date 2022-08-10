@@ -3,15 +3,33 @@ import { Card } from "antd";
 import { useState } from "react";
 import ICustomer from "../Library/interfaces/ICustomer";
 import { customerData } from "../Library/helpers/data";
+import EditModal from "./Modal";
 
 const CustomerDetails = ({ isVisible }: any) => {
   const [customer, setCustomer] = useState<ICustomer>(customerData);
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
 
+  const handleOk = (e: ICustomer) => {
+    setIsModalVisible(false);
+    setCustomer(e);
+  };
 
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
 
   return (
     <>
+      <EditModal
+        customer={customer}
+        isModalVisible={isModalVisible}
+        onCancel={handleCancel}
+        handleOk={handleOk}
+      ></EditModal>
       <Card title="General Information" bordered={false}>
         <div>
           <span style={{ marginLeft: "6px" }}>
