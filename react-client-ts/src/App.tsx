@@ -1,11 +1,14 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { Row } from "antd";
+import SideBar from "./components/SideBar";
+//import DetailsPage from "./components/DetailsPage";
 
 const App = () => {
   return (
     <>
-      <Row></Row>
+      <Row>
+        <SideBar></SideBar>
+      </Row>
     </>
   );
 };
